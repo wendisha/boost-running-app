@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
-    @runs = current_user.runs
-    @charities = current_user.charities
   end
 
   def new
