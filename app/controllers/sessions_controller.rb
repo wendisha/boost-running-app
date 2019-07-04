@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def index
 
   end
@@ -21,4 +22,5 @@ class SessionsController < ApplicationController
     session.delete(@user)
     redirect_to root_path
   end
+  
 end
