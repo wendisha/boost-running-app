@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def show
     @user = User.find_by(id: params[:id])
   end
@@ -22,4 +23,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :email, :password)
   end
+  
 end
