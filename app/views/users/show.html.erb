@@ -1,11 +1,10 @@
-<h2>Welcome, <%= @user.username %>!</h2>
-@runs
-@charities
+<h2>Welcome, <%= @user.username.capitalize %>!</h2>
+
 <h3>Runs</h3>
   <% @user.runs.each do |r| %>
     <div>
       Charity: <%= link_to r.charity.name, charity_path(r.charity.id) %><br>
-      Distance: <%= r.distance %><br>
+      Distance (miles): <%= r.distance %><br>
       Duration: <%= r.duration %><br>
       Shoes: <%= r.shoes %><br>
       Location: <%= r.location %><br>
@@ -14,7 +13,13 @@
     </div>
   <% end %>
 
-<h3>Your Top Charities</h3>
-  
+<h3>Total Raised</h3>
+  <p>$<%= @user.runs.inject(0) {|sum, r| sum + r.distance * 4} %></p>
 
-<h3></h3>
+<h3>Top Charities</h3>
+<% @user.charities.uniq.each do |c| %>
+  Name: <%= c.name %><br>
+  Total Distance (miles): <%= c.runs.where("user_id = ?", current_user.id).inject(0) {|sum, r| sum + r.distance} %><br>
+  Total Raised: $<%= c.runs.where("user_id = ?", current_user.id).inject(0) {|sum, r| sum + r.distance * 4} %><br><br>
+<% end %>
+
