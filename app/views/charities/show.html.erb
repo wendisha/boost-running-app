@@ -1,2 +1,12 @@
 <h2><%= @charity.name %></h2>
 <p><%= @charity.description %></p>
+
+<h3>Total Raised</h3>
+  <p>$<%= @charity.runs.inject(0) {|sum, r| sum + r.distance * 4}%></p>
+
+<h3>Runs</h3>
+  <% @charity.runs.each do |r| %>
+    Distance: <%= r.distance %> miles - Raised: $<%= r.distance * 4 %> - Runner: <%= r.user.username %><br><br>
+  <% end %>
+
+
