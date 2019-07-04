@@ -1,1 +1,20 @@
 <h2>Welcome, <%= @user.username %>!</h2>
+@runs
+@charities
+<h3>Runs</h3>
+  <% @user.runs.each do |r| %>
+    <div>
+      Charity: <%= link_to r.charity.name, charity_path(r.charity.id) %><br>
+      Distance: <%= r.distance %><br>
+      Duration: <%= r.duration %><br>
+      Shoes: <%= r.shoes %><br>
+      Location: <%= r.location %><br>
+      Notes: <%= r.notes %><br>
+      Amount Raised: $<%= r.distance * 4 %><br><br>
+    </div>
+  <% end %>
+
+<h3>Your Top Charities</h3>
+  
+
+<h3></h3>
