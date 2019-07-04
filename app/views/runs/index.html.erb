@@ -1,0 +1,13 @@
+<h2>Runs</h2>
+
+<% @runs.each do |run| %>
+  <div>
+    Runner: <%= run.user.username %><br>
+    Charity: <%= link_to run.charity.name, charity_path(run.charity.id) %><br>
+    Distance: <%= run.distance %><br>
+    Duration: <%= run.duration %><br>
+    Shoes: <%= run.shoes %><br>
+    Location: <%= run.location %><br>
+    Notes: <%= run.notes %><br><br>
+  </div>
+<% end %>
