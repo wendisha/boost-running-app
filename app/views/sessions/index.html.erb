@@ -1,4 +1,21 @@
 <h1>Boost<h1>
 <h2>Run to Raise</h2>
+<p>Support a cause with every mile you run.</p>
 
-<%= link_to "Login", '/login' %> OR <%= link_to "Sign Up", '/signup'%>
+<div>
+  <%= form_for :user do |f| %>
+    <p>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </p>
+    <p>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </p>
+    <p>
+      <%= f.submit 'Login' %>
+    </p>
+  <% end %>
+</div>
+
+<p>Not a member? <%= link_to "Sign Up", '/signup'%> or login with Google.</p>
