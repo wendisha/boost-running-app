@@ -10,13 +10,13 @@
   </head>
 
   <div class="navbar">
-    <%= link_to "All Runs", runs_path %>
-    <%= link_to "All Charities", charities_path %>
-    <%= link_to "Add a Run", new_run_path %>
-    <%= link_to "Add a Charity", new_charity_path %>
-    <%= link_to "Log Out", logout_path, method: :delete %>
+    <% if logged_in? %>
+      <%= link_to current_user.username.capitalize, user_path(current_user.id) %>
+      <%= link_to "Add a Run", new_run_path %>
+      <%= link_to "Charities", charities_path %>
+      <%= link_to "Log Out", logout_path, method: :delete %>
+    <% end %>
   </div>
-
 
   <body>
     <%= yield %>
