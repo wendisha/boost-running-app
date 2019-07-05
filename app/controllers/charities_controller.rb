@@ -6,6 +6,7 @@ class CharitiesController < ApplicationController
 
   def index
     @charities = Charity.all
+    @charity = Charity.new
   end
 
   def new
