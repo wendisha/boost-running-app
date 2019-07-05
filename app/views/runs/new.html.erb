@@ -1,0 +1,44 @@
+<h2>Add a Run</h2>
+
+<div>
+  <%= form_for(@run) do |f| %>
+    <p>
+      <%= f.label :distance %>
+      <%= f.text_field :distance %>
+    </p>
+    <p>
+      <%= f.label :duration %>
+      <%= f.text_field :duration %>
+    </p>
+    <p>
+      <%= f.label :location %>
+      <%= f.select :location, options_for_select(["Indoor", "Outdoor"]), :include_blank => "Select a location" %>
+    </p>
+    <p>
+      <%= f.label :shoes %>
+      <%= f.text_field :shoes %>
+    </p>
+    <p>
+      <%= f.label :notes %>
+      <%= f.text_field :notes %>
+    </p>
+
+    <p>
+      <%= f.label :charity %>
+      <%= f.collection_select :charity_id, Charity.all, :id, :name, :include_blank => "Select a charity" %>
+    </p>
+    <p>OR add a new one:</p>
+    <p>
+      <%=f.fields_for :charity, @run.charity do |c| %>
+        <%= c.label :name %>
+        <%= c.text_field :name %><br><br>
+        <%= c.label :description %>
+        <%= c.text_area :description %>
+      <% end %>
+    </p>
+    <p>
+      <%= f.submit "Add a New Run" %>
+    </p>
+
+  <% end %>
+</div>
