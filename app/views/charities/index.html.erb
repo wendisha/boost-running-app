@@ -1,0 +1,21 @@
+<h2>Participating Charities</h2>
+<p>Here are our participating charities. Our list continues to grow as runners add charities of their choice. If you've got a charity in mind that isn't listed, add it below!</p>
+
+<ul>
+  <% @charities.each do |c| %>
+    <li>
+      <%= c.name %><br>
+      <%= c.description %>
+    </li><br>
+  <% end %>
+</ul>
+
+<h2>Add a New Charity</h2>
+<%= form_for(@charity) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br><br>
+  <%= f.label :description %>
+  <%= f.text_area :description %><br><br>
+  
+  <%= f.submit "Add New Charity" %>
+<% end %>
