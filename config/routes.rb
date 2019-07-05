@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
 
-  resources :users
+  resources :users, only: [:index, :new, :create, :show]
   resources :charities
   resources :runs
 end
