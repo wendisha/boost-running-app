@@ -1,7 +1,11 @@
 class RunsController < ApplicationController
 
   def index
-    @runs = Run.all
+    if params[:charity_id]
+      @runs = Run.all.where(charity_id: params[:charity_id]) #* if charity params exist show all runs for that specific charity.
+    else
+      @runs = Run.all
+    end
   end
 
   def show
@@ -10,7 +14,6 @@ class RunsController < ApplicationController
 
   def new
     @run = Run.new
-    @run.build_charity
   end
 
   def create
