@@ -1,7 +1,7 @@
 <h2>Add a Run</h2>
 
 <div>
-  <%= form_for(@run) do |f| %>
+  <%= form_for @run do |f| %>
     <p>
       <%= f.label :distance %>
       <%= f.number_field :distance %>
@@ -30,9 +30,9 @@
     <p>OR add a new one:</p>
     <p>
       <%=f.fields_for :charity do |c| %>
-        <%= c.label :name %>
-        <%= c.text_field :name %><br><br>
-        <%= c.label :description %>
+        <%= f.label :name %>
+        <%= c.text_field :name %><br>
+        <%= f.label :description %>
         <%= c.text_area :description %>
       <% end %>
     </p>
