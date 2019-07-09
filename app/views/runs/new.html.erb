@@ -31,7 +31,7 @@
     <p>
       <%=f.fields_for :charity do |c| %>
         <%= f.label :name %>
-        <%= c.text_field :name %><br>
+        <%= c.text_field :name %><br><br>
         <%= f.label :description %>
         <%= c.text_area :description %>
       <% end %>
