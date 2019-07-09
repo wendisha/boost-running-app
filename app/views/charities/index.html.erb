@@ -4,7 +4,7 @@
 <ul>
   <% @charities.each do |c| %>
     <li>
-      <%= c.name %><br>
+      <%= link_to c.name, charity_path(c.id) %><br>
       <%= c.description %>
     </li><br>
   <% end %>
@@ -22,7 +22,7 @@
 <% end %>
 
 <h2>Add a New Charity</h2>
-<%= form_for(@charity) do |f| %>
+<%= form_for @charity do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %><br><br>
   <%= f.label :description %>
