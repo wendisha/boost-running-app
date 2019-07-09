@@ -14,6 +14,7 @@ class RunsController < ApplicationController
 
   def new
     @run = Run.new
+    @run.build_charity
   end
 
   def create
@@ -29,6 +30,6 @@ class RunsController < ApplicationController
   private
 
   def run_params
-    params.require(:run).permit(:distance, :duration, :location, :shoes, :notes, :charity_id)
+    params.require(:run).permit(:distance, :duration, :location, :shoes, :notes, :charity_id, charity_attributes: [:name, :description])
   end
 end
