@@ -5,11 +5,12 @@
     <div>
       Charity: <%= link_to r.charity.name, charity_path(r.charity.id) %><br>
       Distance (miles): <%= r.distance %><br>
-      Duration: <%= r.duration %><br>
+      Duration (mins): <%= r.duration %><br>
       Shoes: <%= r.shoes %><br>
       Location: <%= r.location %><br>
       Notes: <%= r.notes %><br>
-      Amount Raised: $<%= r.distance * 4 %><br><br>
+      Amount Raised: $<%= r.distance * 4 %><br>
+      <%= link_to 'Edit', edit_run_path %> | <%= link_to "Delete", run_path(r), method: :delete, data: { confirm: 'Are you certain you want to delete this?'} %><br><br>
     </div>
   <% end %>
 
