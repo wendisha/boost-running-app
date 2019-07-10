@@ -3,40 +3,38 @@
 <div>
   <%= form_for @run do |f| %>
     <p>
-      <%= f.label :distance %>
+      <%= f.label :distance %> (miles):
       <%= f.number_field :distance %>
     </p>
     <p>
-      <%= f.label :duration %>
-      <%= f.number_field :duration %>
+      <%= f.label :duration %> (mins):
+      <%= f.number_field :duration %> 
     </p>
     <p>
-      <%= f.label :location %>
+      <%= f.label :location %>:
       <%= f.select :location, options_for_select(["Indoor", "Outdoor"]), :include_blank => "Select a location" %>
     </p>
     <p>
-      <%= f.label :shoes %>
+      <%= f.label :shoes %>:
       <%= f.text_field :shoes %>
     </p>
     <p>
-      <%= f.label :notes %>
+      <%= f.label :notes %>:
       <%= f.text_field :notes %>
     </p>
 
     <p>
-      <%= f.label :charity %>
-      <% if params[:charity_id]%>
-        <%= f.collection_select(:charity_id, Charity.all, :id, :name, :include_blank => "Select a charity", selected: params[:charity_id])%>
-      <% end %>
+      <%= f.label :charity %>:
+        <%= f.collection_select(:charity_id, Charity.all, :id, :name, :include_blank => "Select a charity", :selected => params[:charity_id])%>
     </p>
 
     <% if !params[:charity_id] %>
     <p>OR add a new one:</p>
       <p>
         <%=f.fields_for :charity do |c| %>
-          <%= f.label :name %>
+          <%= f.label :name %>:
           <%= c.text_field :name %><br><br>
-          <%= f.label :description %>
+          <%= f.label :description %>:
           <%= c.text_area :description %>
         <% end %>
       </p>
