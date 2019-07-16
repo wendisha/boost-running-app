@@ -1,0 +1,36 @@
+<h2>Edit a Run</h2>
+
+<div>
+  <%= form_for @run do |f| %>
+    <p>
+      <%= f.label :distance %> (miles):
+      <%= f.number_field :distance %>
+    </p>
+    <p>
+      <%= f.label :duration %> (mins):
+      <%= f.number_field :duration %> 
+    </p>
+    <p>
+      <%= f.label :location %>:
+      <%= f.select :location, options_for_select(["Indoor", "Outdoor"]), :include_blank => "Select a location" %>
+    </p>
+    <p>
+      <%= f.label :shoes %>:
+      <%= f.text_field :shoes %>
+    </p>
+    <p>
+      <%= f.label :notes %>:
+      <%= f.text_field :notes %>
+    </p>
+
+    <p>
+      <%= f.label :charity %>:
+        <%= f.collection_select(:charity_id, Charity.all, :id, :name, :include_blank => "Select a charity", :selected => @run.charity_id) %>
+    </p>
+    
+    <p>
+      <%= f.submit %>
+    </p>
+
+  <% end %>
+</div>
