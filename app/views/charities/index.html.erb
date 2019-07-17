@@ -2,7 +2,7 @@
 <p>Here are our participating charities. Our list continues to grow as runners add charities of their choice. If you've got a charity in mind that isn't listed, add it below!</p>
 
 <ul>
-  <% @charities.each do |c| %>
+  <% Charity.all.each do |c| %>
     <li>
       <%= link_to c.name, charity_path(c.id) %><br>
       <%= c.description %>
@@ -11,7 +11,10 @@
 </ul>
 
 <h2>Add a New Charity</h2>
-<%= form_for @charity do |f| %>
+
+<%= render partial: 'layouts/errors', locals: {object: @charity} %>
+
+<%= form_for(@charity) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %><br><br>
   <%= f.label :description %>
