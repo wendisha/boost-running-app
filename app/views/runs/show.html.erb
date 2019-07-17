@@ -1,2 +1,12 @@
-<h2>Another run, another donation. Great job, <%= current_user.username %>!</h2>
-<%= @run.distance %>
+<h2>Another run, another donation.</h2>
+<div>
+  Charity: <%= link_to @run.charity.name, charity_path(@run.charity.id) %><br>
+  Distance (miles): <%= @run.distance %><br>
+  Duration (mins): <%= @run.duration %><br>
+  Shoes: <%= @run.shoes %><br>
+  Location: <%= @run.location %><br>
+  
+  <% if @run.user_id == current_user.id %>
+    <%= link_to 'Edit', edit_run_path %> | <%= link_to "Delete", run_path(@run), method: :delete, data: { confirm: 'Are you sure you want to delete this run?'} %><br><br>
+  <% end %>
+</div>
