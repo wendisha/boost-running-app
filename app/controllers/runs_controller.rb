@@ -1,8 +1,8 @@
 class RunsController < ApplicationController
 
   def index
-    if params[:charity_id]
-      @runs = Run.all.where(charity_id: params[:charity_id]) #* if charity params exist show all runs for that specific charity.
+    if @charity = Charity.find_by(id: params[:charity_id])
+      @runs = @charity.runs
     else
       @runs = Run.all
     end
