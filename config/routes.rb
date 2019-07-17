@@ -16,9 +16,10 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#omniauth'
 
   resources :users, only: [:index, :new, :create, :show]
-  
-  resources :charities do 
-    resources :runs
-  end
+
   resources :runs
+  resources :charities do 
+    resources :runs, only: [:new, :index]
+  end
+  
 end
