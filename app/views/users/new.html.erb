@@ -1,5 +1,7 @@
 <h2>Sign Up!</h2>
 
+<%= render partial: 'layouts/errors', locals: {object: @user} %>
+
 <div>
   <%= form_for(@user) do |f| %>
     <p>
