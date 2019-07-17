@@ -4,12 +4,12 @@ class RunsController < ApplicationController
     if @charity = Charity.find_by(id: params[:charity_id])
       @runs = @charity.runs
     else
-      @runs = Run.all
+      @runs = current_user.runs
     end
   end
 
   def show
-    @run = Run.find_by(id: params[:id])
+    @run = Run.find_by(id: params[:id]) 
   end
 
   def new
