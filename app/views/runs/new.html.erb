@@ -1,5 +1,7 @@
 <h2>Add a Run</h2>
 
+<%= render partial: 'layouts/errors', locals: {object: @run} %>
+
 <div>
   <%= form_for @run do |f| %>
     <p>
