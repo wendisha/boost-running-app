@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?
   add_flash_types :error
-  
+
   private
 
   def current_user
@@ -12,4 +12,5 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !!current_user
   end
+
 end
