@@ -5,6 +5,8 @@ class Charity < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
 
+  scope :ascending, -> { order(:name) }
+
 end
 
 
