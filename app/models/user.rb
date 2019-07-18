@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :username, :email, presence: true
   validates :username, :email, uniqueness: true
 
-  scope :charity_runs, -> { joins(:runs).group(:charity_id) }
+  scope :total_charity_runs, -> { joins(:runs).group(:charity_id) }
 
   has_secure_password
 
