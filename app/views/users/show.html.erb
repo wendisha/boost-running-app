@@ -1,7 +1,7 @@
-<h2>Welcome, <%= current_user.username.capitalize %>!</h2>
+<h2>Welcome, <%= @user.username.capitalize %>!</h2>
 
 <h3>Runs</h3>
-  <% current_user.runs.each do |r| %>
+  <% @user.runs.each do |r| %>
     <div>
       Charity: <%= link_to r.charity.name, charity_path(r.charity.id) %><br>
       Distance (miles): <%= r.distance %><br>
@@ -9,18 +9,20 @@
       Shoes: <%= r.shoes %><br>
       Location: <%= r.location %><br>
       Notes: <%= r.notes %><br>
-      Amount Raised: $<%= r.distance * 4 %><br>
-      <%= link_to 'Edit', edit_run_path %> | <%= link_to "Delete", run_path(r), method: :delete, data: { confirm: 'Are you sure you want to delete this run?'} %><br><br>
+      Amount Raised: $<%= r.distance * 4 %><br><br>
+      <% if @user == current_user %>
+        <%= link_to 'Edit', edit_run_path %> | <%= link_to "Delete", run_path(r), method: :delete, data: { confirm: 'Are you sure you want to delete this run?'} %><br><br>
+      <% end %>
     </div>
   <% end %>
 
 <h3>Total Raised</h3>
-  <p>$<%= current_user.runs.inject(0) {|sum, r| sum + r.distance * 4} %></p>
+  <p>$<%= @user.runs.inject(0) {|sum, r| sum + r.distance * 4} %></p>
 
 <h3>Top Charities</h3>
-  <% current_user.charities.uniq.each do |c| %>
+  <% @user.charities.uniq.each do |c| %>
     Name: <%= c.name %><br>
-    Total Distance (miles): <%= c.runs.where("user_id = ?", current_user.id).inject(0) {|sum, r| sum + r.distance} %><br>
-    Total Raised: $<%= c.runs.where("user_id = ?", current_user.id).inject(0) {|sum, r| sum + r.distance * 4} %><br><br>
+    Total Distance (miles): <%= c.runs.where("user_id = ?", @user.id).inject(0) {|sum, r| sum + r.distance} %><br>
+    Total Raised: $<%= c.runs.where("user_id = ?", @user.id).inject(0) {|sum, r| sum + r.distance * 4} %><br><br>
   <% end %>
 
