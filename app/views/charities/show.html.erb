@@ -18,4 +18,4 @@
     Distance: <%= r.distance %> miles - Raised: $<%= r.distance * 4 %> - Runner: <%= link_to r.user.username, user_path(r.user) %><br><br>
   <% end %>
 
-<%= link_to "View All #{@charity.name} Runs", charity_runs_path(@charity) %> | <%= link_to "Add a run for this charity", new_charity_run_path(@charity) %>
+<%= link_to "View Runs", charity_runs_path(@charity) %> | <%= link_to "Add a Run", new_charity_run_path(@charity) %>
