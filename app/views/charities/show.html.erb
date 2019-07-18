@@ -7,7 +7,7 @@
 <h3>Top Runner</h3>
 
   <%= User.total_charity_runs.where('charity_id = ?', @charity.id).order('count(*)').pluck('username').first %>
-
+  
   </p>
 
   <p><b>What's a <em>top runner</em>?</b></p>
