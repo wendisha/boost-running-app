@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :new, :create, :show]
 
   resources :runs
+
   resources :charities do 
     resources :runs, only: [:new, :index]
   end
