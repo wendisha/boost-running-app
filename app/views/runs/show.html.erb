@@ -3,7 +3,6 @@
   Charity: <%= link_to @run.charity.name, charity_path(@run.charity.id) %><br>
   Distance (miles): <%= @run.distance %><br>
   Duration (mins): <%= @run.duration %><br>
-  Shoes: <%= @run.shoes %><br>
   Location: <%= @run.location %><br>
   
   <% if @run.user_id == current_user.id %>
