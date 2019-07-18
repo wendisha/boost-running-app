@@ -10,6 +10,7 @@ class RunsController < ApplicationController
 
   def show
     @run = Run.find_by(id: params[:id]) 
+    redirect_to runs_path if !@run
   end
 
   def new
