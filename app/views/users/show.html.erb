@@ -1,4 +1,8 @@
-<h2>Welcome, <%= @user.username.capitalize %>!</h2>
+<% if @user == current_user %>
+  <h2>Welcome, <%= @user.username.capitalize %>!</h2>
+<% else %>
+  <h2>Run History: <%= @user.username.capitalize %> </h2>
+<% end %>
 
 <h3>Runs</h3>
   <% @user.runs.each do |r| %>
@@ -8,11 +12,13 @@
       Duration (mins): <%= r.duration %><br>
       Shoes: <%= r.shoes %><br>
       Location: <%= r.location %><br>
-      Notes: <%= r.notes %><br>
-      Amount Raised: $<%= r.distance * 4 %><br><br>
+      Notes: <%= r.notes %> <br>
+      Amount Raised: $<%= r.distance * 4 %> <br>
+
       <% if @user == current_user %>
-        <%= link_to 'Edit', edit_run_path %> | <%= link_to "Delete", run_path(r), method: :delete, data: { confirm: 'Are you sure you want to delete this run?'} %><br><br>
+        <%= link_to 'Edit', edit_run_path(r.id) %> | <%= link_to "Delete", run_path(r), method: :delete, data: { confirm: 'Are you sure you want to delete this run?'} %><br>
       <% end %>
+      <br>
     </div>
   <% end %>
 
