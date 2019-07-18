@@ -28,8 +28,8 @@
 
 <h3>Top Charities</h3>
   <% @user.charities.top_three.uniq.each do |c| %>
-    Name: <%= c.name %><br>
-    Total Distance (miles): <%= c.runs.where("user_id = ?", @user.id).inject(0) { |sum, r| sum + r.distance } %><br>
-    Total Raised: $<%= c.runs.where("user_id = ?", @user.id).inject(0) { |sum, r| sum + r.distance * 3 } %><br><br>
+    Name: <%= c.name %> | 
+    Total Distance (miles): <%= c.runs.where("user_id = ?", current_user.id).inject(0) { |sum, r| sum + r.distance } %> | 
+    Total Raised: $<%= c.runs.where("user_id = ?", current_user.id).inject(0) { |sum, r| sum + r.distance * 3 } %><br><br>
   <% end %>
 
