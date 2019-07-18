@@ -2,22 +2,7 @@
 
 <div>
   <%= form_for @run do |f| %>
-    <p>
-      <%= f.label :distance %> (miles):
-      <%= f.number_field :distance %>
-    </p>
-    <p>
-      <%= f.label :duration %> (mins):
-      <%= f.number_field :duration %> 
-    </p>
-    <p>
-      <%= f.label :location %>:
-      <%= f.select :location, options_for_select(["Indoor", "Outdoor"]), :include_blank => "Select a location" %>
-    </p>
-    <p>
-      <%= f.label :notes %>:
-      <%= f.text_field :notes %>
-    </p>
+    <%= render partial: 'layouts/run_form', locals: {f: f} %>
 
     <p>
       <%= f.label :charity %>:
