@@ -5,8 +5,8 @@ class Charity < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
 
-  scope :ascending, -> { order(:name) }
-
+  scope :alpha_order, -> { order(:name) }
+  scope :top_three, -> { group(:name).order('distance DESC').limit(3) }
 end
 
 
