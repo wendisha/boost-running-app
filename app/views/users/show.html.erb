@@ -23,12 +23,13 @@
   <% end %>
 
 <h3>Total Raised</h3>
-  <p>$<%= @user.runs.inject(0) {|sum, r| sum + r.distance * 4} %></p>
+  
+  <p>$<%= @user.runs.inject(0) { |sum, r| sum + r.distance * 4 } %></p>
 
 <h3>Top Charities</h3>
-  <% @user.charities.uniq.each do |c| %>
+  <% @user.charities.top_three.uniq.each do |c| %>
     Name: <%= c.name %><br>
-    Total Distance (miles): <%= c.runs.where("user_id = ?", @user.id).inject(0) {|sum, r| sum + r.distance} %><br>
-    Total Raised: $<%= c.runs.where("user_id = ?", @user.id).inject(0) {|sum, r| sum + r.distance * 4} %><br><br>
+    Total Distance (miles): <%= c.runs.where("user_id = ?", @user.id).inject(0) { |sum, r| sum + r.distance } %><br>
+    Total Raised: $<%= c.runs.where("user_id = ?", @user.id).inject(0) { |sum, r| sum + r.distance * 3 } %><br><br>
   <% end %>
 
