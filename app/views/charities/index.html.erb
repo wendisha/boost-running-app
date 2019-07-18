@@ -1,5 +1,5 @@
 <h2>Participating Charities</h2>
-<p>Here are our participating charities. Our list continues to grow as runners add charities of their choice. If you've got a charity in mind that isn't listed, add it below!</p>
+<p>Our list continues to grow as runners add charities they are passionate about. If you've got a charity in mind that isn't listed, add it below!</p>
 
 <ul>
   <% @charities.each do |c| %>
@@ -14,11 +14,5 @@
 
 <%= render partial: 'layouts/errors', locals: {object: @charity} %>
 
-<%= form_for(@charity) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br><br>
-  <%= f.label :description %>
-  <%= f.text_area :description %><br><br>
-  
-  <%= f.submit "Add New Charity" %>
-<% end %>
+<%= render partial: 'layouts/charity_form' %>
+
