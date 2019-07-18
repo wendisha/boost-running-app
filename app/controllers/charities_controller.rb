@@ -5,6 +5,7 @@ class CharitiesController < ApplicationController
   end
 
   def index
+    @charities = Charity.alpha_order 
     @charity = Charity.new
   end
 
