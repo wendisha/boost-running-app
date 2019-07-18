@@ -6,7 +6,7 @@
 
 <h3>Top Runner</h3>
 
-  <%= User.charity_runs.where('charity_id = ?', @charity.id).order('count(*)').pluck('username').first %>
+  <%= User.total_charity_runs.where('charity_id = ?', @charity.id).order('count(*)').pluck('username').first %>
   
   </p>
 
@@ -15,7 +15,7 @@
 
 <h3>Runs</h3>
   <% @charity.runs.each do |r| %> 
-    Distance: <%= r.distance %> miles - Raised: $<%= r.distance * 4 %> - Runner: <%= r.user.username %><br><br>
+    Distance: <%= r.distance %> miles - Raised: $<%= r.distance * 4 %> - Runner: <%= link_to r.user.username, user_path(r.user) %><br><br>
   <% end %>
 
 <%= link_to "View All #{@charity.name} Runs", charity_runs_path(@charity) %> | <%= link_to "Add a run for this charity", new_charity_run_path(@charity) %>
