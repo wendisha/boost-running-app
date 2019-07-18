@@ -1,8 +1,4 @@
-<% if @user == current_user %>
-  <h2>Welcome, <%= @user.username.capitalize %>!</h2>
-<% else %>
-  <h2>Run History: <%= @user.username.capitalize %> </h2>
-<% end %>
+<%= display_welcome_message %>
 
 <h3>Runs</h3>
   <% @user.runs.each do |r| %>
@@ -10,7 +6,6 @@
       Charity: <%= link_to r.charity.name, charity_path(r.charity.id) %><br>
       Distance (miles): <%= r.distance %><br>
       Duration (mins): <%= r.duration %><br>
-      Shoes: <%= r.shoes %><br>
       Location: <%= r.location %><br>
       Notes: <%= r.notes %> <br>
       Amount Raised: $<%= r.distance * 4 %> <br>
