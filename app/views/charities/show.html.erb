@@ -1,32 +1,37 @@
-<h2><%= @charity.name %></h2>
-<p><%= @charity.description %></p>
+<div class="container-fluid"> 
+  <div class="container">
+    <h2><%= @charity.name %></h2>
 
-<h3>Total Raised</h3>
-  <p>$<%= @charity.runs.inject(0) {|sum, r| sum + r.distance * 4}%></p>
+    <p><%= @charity.description %></p>
 
-<% !if @charity.runs.present? %>
-  <h3>Top Runner</h3>
+    <h3>Total Raised</h3>
+    <p>$<%= @charity.runs.inject(0) {|sum, r| sum + r.distance * 4}%></p>
 
-    <%= User.total_charity_runs.where('charity_id = ?', @charity.id).order('count(*)').pluck('username').first %>
-    
-    </p>
+    <% !if @charity.runs.present? %>
+      <h3>Top Runner</h3>
 
-    <p><b>What's a <em>top runner</em>?</b></p>
-    <p>Top runners have ran the most miles/raised the most $ for a charity. Is this your favourite charity? Beat our top runner, and <%= link_to "add a run for the #{@charity.name}", new_charity_run_path(@charity) %>!</p>
-<% end %>
+        <%= User.total_charity_runs.where('charity_id = ?', @charity.id).order('count(*)').pluck('username').first %>
+        
+        </p>
 
-<h3>Runs</h3>
+        <p><b>What's a <em>top runner</em>?</b></p>
+        <p>Top runners have ran the most miles/raised the most $ for a charity. Is this your favourite charity? Beat our top runner, and <%= link_to "add a run for the #{@charity.name}", new_charity_run_path(@charity) %>!</p>
+    <% end %>
 
-<% if !@charity.runs.present? %>
+    <h3>Runs</h3>
 
-  <p>No runs yet! Be first to <%= link_to "add a run", new_charity_run_path(@charity) %>!<p>
+    <% if !@charity.runs.present? %>
 
-<% else %>
+      <p>No runs yet! Be first to <%= link_to "add a run", new_charity_run_path(@charity) %>!<p>
 
-  <% @charity.runs.each do |r| %> 
-    Distance: <%= r.distance %> miles - Raised: $<%= r.distance * 4 %> - Runner: <%= link_to r.user.username, user_path(r.user) %><br><br>
-  <% end %>
+    <% else %>
 
-  <%= link_to "View Runs", charity_runs_path(@charity) %> | <%= link_to "Add a Run", new_charity_run_path(@charity) %>
-  
-<% end %>
+      <% @charity.runs.each do |r| %> 
+        Distance: <%= r.distance %> miles - Raised: $<%= r.distance * 4 %> - Runner: <%= link_to r.user.username, user_path(r.user) %><br><br>
+      <% end %>
+
+      <%= link_to "View Runs", charity_runs_path(@charity) %> | <%= link_to "Add a Run", new_charity_run_path(@charity) %>
+      
+    <% end %>
+  </div>  
+</div>

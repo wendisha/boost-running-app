@@ -1,8 +1,12 @@
-<div id="login-container">
-  <div class="login">
+<div id="action-container">
+  <div class="action">
     <%= image_tag "boost_logo.png", :class => 'logo' %>
 
-    <%= error %>
+    <% flash.each do |name, msg| %>
+      <div class="alert alert-<%= name %>">
+        <%= msg %>
+      </div>
+    <% end %>
 
     <div>
       <%= form_for :user do |f| %>
@@ -21,5 +25,5 @@
     </div>
   </div> 
 
-  <p class="sign-up-section">Not a member? <%= link_to "Sign Up", signup_path %> or <%= link_to "Sign In with Google", '/auth/google_oauth2'%>.</p>
+  <p class="cta-section">Not a member? <%= link_to "Sign Up", signup_path %> or <%= link_to "Sign In with Google", '/auth/google_oauth2'%>.</p>
 </div>

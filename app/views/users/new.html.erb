@@ -1,25 +1,28 @@
-<h2>Sign Up!</h2>
+<div id="action-container">
+  <div class="action">
+    <h2>Sign Up!</h2>
 
-<%= render partial: 'layouts/errors', locals: {object: @user} %>
+    <%= render partial: 'layouts/errors', locals: {object: @user} %>
 
-<div>
-  <%= form_for(@user) do |f| %>
-    <p>
-      <%= f.label :username %>
-      <%= f.text_field :username %>
-    </p>
-    <p>
-      <%= f.label :email %>
-      <%= f.email_field :email %>
-    </p>
-    <p>
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </p>
-    <p>
-      <%= f.submit "Sign Up" %>
-    </p>
-  <% end %>
+    <div>
+      <%= form_for(@user) do |f| %>
+        <p>
+          <%= f.label :username %>
+          <%= f.text_field :username %>
+        </p>
+        <p>
+          <%= f.label :email %>
+          <%= f.email_field :email %>
+        </p>
+        <p>
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+        </p>
+        <p>
+          <%= f.submit "Sign Up" %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+  <p class="cta-section">Already a member? <%= link_to "Sign In", root_path %>.</a>
 </div>
-
-<p>Already a member? <%= link_to "Sign In", root_path %>.</a>

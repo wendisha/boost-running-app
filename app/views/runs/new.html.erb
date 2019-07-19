@@ -1,30 +1,34 @@
-<h2>Add a Run</h2>
+<div class="container-fluid"> 
+  <div class="container"> 
+    <h2>Add a Run</h2>
 
-<%= render partial: 'layouts/errors', locals: {object: @run} %>
+    <%= render partial: 'layouts/errors', locals: {object: @run} %>
 
-<div>
-  <%= form_for @run do |f| %>
-    <%= render partial: 'layouts/run_form', locals: {f: f} %>
+    <div>
+      <%= form_for @run do |f| %>
+        <%= render partial: 'layouts/run_form', locals: {f: f} %>
 
-    <p>
-      <%= f.label :charity %>:
-        <%= f.collection_select(:charity_id, Charity.all, :id, :name, :include_blank => "Select a charity", :selected => params[:charity_id])%>
-    </p>
+        <p>
+          <%= f.label :charity %>:
+            <%= f.collection_select(:charity_id, Charity.all, :id, :name, :include_blank => "Select a charity", :selected => params[:charity_id])%>
+        </p>
 
-    <% if !params[:charity_id] %>
-    <p>OR add a new one:</p>
-      <p>
-        <%=f.fields_for :charity do |c| %>
-          <%= f.label :name %>:
-          <%= c.text_field :name %><br><br>
-          <%= f.label :description %>:
-          <%= c.text_area :description %>
+        <% if !params[:charity_id] %>
+        <p>OR add a new one:</p>
+          <p>
+            <%=f.fields_for :charity do |c| %>
+              <%= f.label :name %>:
+              <%= c.text_field :name %><br><br>
+              <%= f.label :description %>:
+              <%= c.text_area :description %>
+            <% end %>
+          </p>
         <% end %>
-      </p>
-    <% end %>
-    <p>
-      <%= f.submit %>
-    </p>
+        <p>
+          <%= f.submit %>
+        </p>
 
-  <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
