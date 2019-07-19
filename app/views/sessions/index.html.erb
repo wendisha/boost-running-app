@@ -1,7 +1,6 @@
 <div id="login-container">
   <div class="login">
     <%= image_tag "boost_logo.png", :class => 'logo' %>
-    <p>Support a cause with every mile you run.</p>
 
     <%= error %>
 
@@ -16,7 +15,7 @@
           <%= f.password_field :password %>
         </p>
         <p>
-          <%= f.submit 'Sign In' %>
+          <%= f.submit 'Sign In', :class => 'sign-up-btn btn-primary btn-sm btn-block' %>
         </p>
       <% end %>
     </div>
