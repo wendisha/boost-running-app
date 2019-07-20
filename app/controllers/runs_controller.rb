@@ -41,7 +41,7 @@ class RunsController < ApplicationController
   def destroy
     @run = Run.find_by(id: params[:id])
     @run.delete
-    render :index
+    redirect_to user_path(current_user)
   end
 
   private
