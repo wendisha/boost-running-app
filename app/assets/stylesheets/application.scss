@@ -73,14 +73,29 @@ input.sign-up-btn.btn-primary.btn-sm:hover {
 nav.navbar.navbar-expand-lg.navbar-light.sticky-top {
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.2);
 
-  background-color: #fff8be;
+  background-color: #5ce1e6;
 }
 
 li.nav-link a {
+  color: rgba(0, 0, 0, 0.5);
 }
 
-li.nav-link a:hover {
+nav.navbar a:hover {
+  color: #fff;
   text-decoration: none;
-  border-bottom: 2px solid #fff;
-  padding-bottom: 5px;
+  color: #fff;
+}
+
+/* S T Y L E S */
+.welcome-message {
+  font-size: 3rem;
+  color: #5ce1e6;
+  font-weight: 700;
+}
+
+a {
+  color: #444;
+}
+a:hover {
+  color: #5ce1e6;
 }
