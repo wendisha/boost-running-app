@@ -8,12 +8,12 @@
     <p>$<%= @charity.runs.inject(0) {|sum, r| sum + r.distance * 4}%></p>
 
     <% !if @charity.runs.present? %>
-      <h3>Top Runner</h3>
+    <h3>Top Runner</h3>
 
-        <%= User.total_charity_runs.where('charity_id = ?', @charity.id).order('count(*)').pluck('username').first %>
+      <%= User.total_charity_runs.where('charity_id = ?', @charity.id).order('count(*)').pluck('username').first %>
 
-        <p><b>What's a <em>top runner</em>?</b></p>
-        <p>Top runners have ran the most miles/raised the most $ for a charity. Is this your favourite charity? Beat our top runner, and <%= link_to "add a run for the #{@charity.name}", new_charity_run_path(@charity) %>!</p>
+      <p><b>What's a <em>top runner</em>?</b></p>
+      <p>Top runners have ran the most miles/raised the most $ for a charity. Is this your favourite charity? Beat our top runner, and <%= link_to "add a run for the #{@charity.name}", new_charity_run_path(@charity) %>!</p>
     <% end %>
 
     <h3>Runs</h3>
@@ -28,7 +28,7 @@
         Distance: <%= r.distance %> miles - Raised: $<%= r.distance * 4 %> - Runner: <%= link_to r.user.username, user_path(r.user) %><br><br>
       <% end %>
 
-      <%= link_to "View Runs", charity_runs_path(@charity) %> | <%= link_to "Add a Run", new_charity_run_path(@charity) %>
+      <%= link_to "View Runs", charity_runs_path(@charity), :class => 'boost-btn btn-primary btn-sm' %>&nbsp; <%= link_to "Add a Run", new_charity_run_path(@charity), :class => 'boost-btn btn-primary btn-sm' %>
       
     <% end %>
   </div>  
