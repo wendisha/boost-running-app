@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :total_raised, :top_charities
   add_flash_types :danger
 
   private
@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !!current_user
+  end
+
+  def total_raised
+    @user.runs.inject(0) { |sum, r| sum + r.distance * 3 }
   end
 
 end
