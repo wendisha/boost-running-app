@@ -128,3 +128,16 @@ a {
 a:hover {
   color: #5ce1e6;
 }
+
+/* E R R O R S */
+div#error_explanation h2 {
+  display: none;
+}
+.field_with_errors input {
+  border: 1px solid red;
+}
+div#error_explanation ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
