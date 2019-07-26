@@ -13,8 +13,7 @@
             <%= f.collection_select(:charity_id, Charity.all, :id, :name, :include_blank => "Select a charity", :selected => params[:charity_id])%>
         </p>
 
-        <% if !params[:charity_id] %>
-        <p>OR add a new one:</p>
+        <% if params[:charity_id].nil? %> <!-- fix so that nested form disappears if a charity has been selected-->
           <p>
             <%=f.fields_for :charity do |c| %>
               <%= f.label :name %>:
@@ -27,7 +26,6 @@
         <p>
           <%= f.submit "Create Run", :class => 'boost-btn btn-primary btn-sm' %>
         </p>
-
       <% end %>
     </div>
   </div>
