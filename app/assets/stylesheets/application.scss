@@ -68,6 +68,7 @@ img.logo {
   background-color: #85f1f5;
   border-color: #85f1f5;
 }
+
 #user_username,
 #user_password {
   width: 100%;
@@ -77,10 +78,10 @@ img.logo {
 .new_user input {
   width: 100%;
 }
+
 /* N A V B A R */
 nav.navbar.navbar-expand-lg.navbar-light.sticky-top {
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.2);
-
   background-color: #5ce1e6;
 }
 
@@ -91,18 +92,19 @@ li.nav-link a {
 nav.navbar a:hover {
   color: #fff;
   text-decoration: none;
-  color: #fff;
+  background-color: transparent;
 }
 
 /* W E L C O M E */
 p.welcome-message {
-  font-size: 1.5em;
+  font-size: 1.7em;
   color: #444;
   font-weight: 300;
 }
 
 a.welcome-link {
   margin: 20px;
+  font-size: 1.5em;
 }
 
 .welcome-wrapper {
@@ -125,22 +127,39 @@ a.welcome-link {
 a {
   color: #444;
 }
+
 a:hover {
   color: #5ce1e6;
+  background-color: #fff;
+}
+
+.charity-name {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.charity-form {
+  padding-bottom: 3em;
 }
 
 /* E R R O R S */
 div#error_explanation h2 {
   display: none;
 }
+
 .field_with_errors input {
   border: 1px solid red;
 }
+
 div#error_explanation ul {
   margin: 0;
-  padding: 0;
+  padding: 10px 0;
   list-style: none;
 }
+#error_explanation ul li {
+  color: red;
+}
+
 .alert {
   padding: 0.3rem 1.25rem;
 }
