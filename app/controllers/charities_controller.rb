@@ -18,6 +18,7 @@ class CharitiesController < ApplicationController
     if @charity.save
       redirect_to charity_path(@charity.id)
     else
+      @charities = Charity.alpha_order
       render :index
     end
   end
