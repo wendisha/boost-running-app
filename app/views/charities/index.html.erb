@@ -6,7 +6,7 @@
     <ul>
       <% @charities.each do |c| %>
         <li>
-          <%= link_to c.name, charity_path(c.id) %><br>
+          <%= link_to c.name, charity_path(c.id), :class => "charity-name"  %><br>
           <%= c.description %>
         </li><br>
       <% end %>
