@@ -5,7 +5,7 @@
     <%= render partial: 'layouts/errors', locals: {object: @run} %>
 
     <div>
-      <%= form_for @run do |f| %>
+      <%= form_for(@run) do |f| %>
         <%= render partial: 'layouts/run_form', locals: {f: f} %>
 
         <p>
@@ -13,7 +13,9 @@
             <%= f.collection_select(:charity_id, Charity.all, :id, :name, :include_blank => "Select a charity", :selected => params[:charity_id])%>
         </p>
 
-        <% if params[:charity_id].nil? %> <!-- fix so that nested form disappears if a charity has been selected-->
+
+        <% if !params[:charity_id].present? %> <!-- fix so that nested form disappears if a charity has been selected -->
+          <p>Or add a new charity:</p>
           <p>
             <%=f.fields_for :charity do |c| %>
               <%= f.label :name %>:
