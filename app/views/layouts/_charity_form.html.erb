@@ -1,8 +1,10 @@
-<%= form_for(@charity) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br><br>
-  <%= f.label :description %>
-  <%= f.text_area :description %><br><br>
-  
-  <%= f.submit "Add New Charity", :class => 'boost-btn btn-primary btn-sm' %>
-<% end %>
+<div class="charity-form">
+  <%= form_for(@charity) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br><br>
+    <%= f.label :description %>
+    <%= f.text_area :description %><br><br>
+    
+    <%= f.submit "Add New Charity", :class => 'boost-btn btn-primary btn-sm' %>
+  <% end %>
+</div>
