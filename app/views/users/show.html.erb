@@ -24,10 +24,10 @@
 
     <div class="col-sm">
       <h3>Top Charities</h3>
-        <% @user.charities.top_three.uniq.each do |c| %>
+        <% @user.charities.top_three.each do |c| %>
           Name: <%= c.name %> | 
-          Total Distance (miles): <%= c.runs.where("user_id = ?", current_user.id).inject(0) { |sum, r| sum + r.distance } %> | 
-          Total Raised: $<%= c.runs.where("user_id = ?", current_user.id).inject(0) { |sum, r| sum + r.distance * 3 } %><br><br>
+          Total Distance: <%= c.runs.total_distance(@user) %>
+          Total Raised: $<%= c.runs.total_amount_raised(@user) %><br><br>
         <% end %>
 
       <h3>Total Raised</h3>
