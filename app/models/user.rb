@@ -5,8 +5,6 @@ class User < ApplicationRecord
   validates :username, :email, presence: true
   validates :username, :email, uniqueness: true
 
-  scope :total_charity_runs, -> { joins(:runs).group(:charity_id) }
-
   has_secure_password
 
   def self.from_omniauth(auth)
@@ -17,4 +15,9 @@ class User < ApplicationRecord
     end
   end
 
+  def self.total_charity_runs(charity)
+    joins(:runs).group(:charity_id).where('charity_id = ?', charity.id).order('count(*)').pluck('username').first 
+  end
+
 end
+
