@@ -1,11 +1,13 @@
 module RunsHelper
 
-  def user_delete_run
-    if @run.user_id == current_user.id 
-      
-     link_to 'Edit', edit_run_path | link_to "Delete", run_path(@run), method: :delete, data: { confirm: 'Are you sure you want to delete this run?'} 
-    
-    end
+  #Helper method to edit runs. html_safe prevents Rails from escaping this string
+  def user_edit_run(text, href)
+    "<a href='#{href}'>#{text}</a>".html_safe
+  end
+
+  #Helper method to delet runs. html_safe prevents Rails from escaping this string
+  #You could always test in the console to see what html a link_to generates, for example: helper.link_to "delete", "<url>", :method => 'delete'
+  def user_delete_run(text, href, method)
+    "<a data-method=\"delete\" href=\'#{href}\'>#{text}</a>".html_safe
   end
 end
-
